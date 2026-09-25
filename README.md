@@ -91,8 +91,228 @@ sock.ev.on('creds.update', saveCreds)
 | 😀 **Newsletter Reactions** | React to channel messages with emojis, track votes, and manage newsletter engagement |
 | 📊 **Poll Voting** | Create polls, track encrypted votes, display results, and support multiple selection polls |
 | 🎮 **Built-in Games** | 8 games: Blackjack, Slots, Dice, Coin Flip, Roulette, Mines, Trivia, Rock Paper Scissors |
+| 📞 **VoIP Caller** | Answer incoming calls with audio playback using WASM VoIP engine |
+| ⚡ **Pro Methods** | 34 convenience methods: Polls, Newsletter, Status, Chat, Groups, Profile |
 
 ---
+
+## 📞 VoIP Caller (Call Answer + Audio)
+
+Answer incoming WhatsApp calls and play audio automatically:
+
+```javascript
+const { makeWASocket, enableCallAutoAnswer } = require('ishumdz-bail');
+
+const sock = makeWASocket({ auth: state });
+
+// Enable auto-answer with audio playback
+sock.enableCallAutoAnswer({
+    audio: './welcome.wav',      // Audio file to play (MP3/WAV)
+    autoAnswer: true,            // Auto-answer incoming calls
+    answerDelayMs: 200,          // Delay before answering
+    durationMs: 60000,           // Max call duration (60s)
+    loop: true,                  // Loop audio
+    onCall: (call) => {},        // Callback on incoming call
+    onAnswer: (call) => {},      // Callback when answered
+    onEnd: (call, reason) => {}  // Callback when ended
+});
+```
+
+**Manual call handling:**
+```javascript
+sock.ev.on('call', async ([call]) => {
+    if (call.status === 'offer') {
+        // Reject call
+        await sock.rejectCall(call.id, call.from);
+        
+        // Or accept with VoIP client
+        const voipClient = getActiveVoipClient();
+        if (voipClient) {
+            const activeCall = voipClient.activeCall;
+            activeCall.accept('./audio.wav');
+        }
+    }
+});
+```
+
+---
+
+## ⚡ Pro Methods
+
+34 convenience methods attached to socket via `attachProMethods()`:
+
+```javascript
+const { makeWASocket, attachProMethods } = require('ishumdz-bail');
+
+const sock = makeWASocket({ auth: state });
+attachProMethods(sock); // Attach all Pro methods
+```
+
+### 📊 Polls Pro
+
+```javascript
+// Create a poll
+await sock.sendPoll(jid, {
+    name: 'What is your favorite color?',
+    values: ['Red', 'Blue', 'Green', 'Yellow'],
+    selectableCount: 1
+});
+
+// Vote on a poll
+await sock.sendPollVote(jid, pollMessage, ['Red']);
+
+// Get poll results
+const votes = sock.getAggregatePollVotes(pollMessage);
+```
+
+### 📢 Newsletter/Channel Pro
+
+```javascript
+// Smart channel poll vote (auto-resolves links, IDs)
+await sock.channelVote('https://whatsapp.com/channel/xxx/123', 1);
+
+// React to channel post
+await sock.newsletterReact(channelJid, serverId, '👍');
+
+// Get channel messages (decoded)
+const messages = await sock.newsletterGetMessages(channelJid, 50);
+
+// Search channels
+const results = await sock.newsletterSearch('technology');
+
+// List followed channels
+const channels = await sock.newsletterList();
+```
+
+### 🟢 Status/Stories Pro
+
+```javascript
+// Send text status
+await sock.sendStatusText('Hello World!', {
+    backgroundColor: '#25D366',
+    font: 1
+});
+
+// Send media status
+await sock.sendStatusMedia('./photo.jpg', {
+    type: 'image',
+    caption: 'My status!'
+});
+
+// React to status
+await sock.reactStatus(statusKey, '❤️');
+```
+
+### 💬 Chat Pro
+
+```javascript
+// Edit a message
+await sock.editMessage(jid, messageKey, 'Updated text!');
+
+// Delete a message
+await sock.deleteMessage(jid, messageKey);
+
+// Pin a message (24h, 7d, or 30d)
+await sock.pinMessage(jid, messageKey, 86400); // 24 hours
+
+// Star/unstar a message
+await sock.starMessage(jid, messageKey, true);
+
+// React to a message
+await sock.reactMessage(jid, messageKey, '😂');
+
+// Send presence (typing indicator)
+await sock.sendPresence(jid, 'composing');
+
+// Quick reply with quote
+await sock.reply(jid, 'This is a reply!', quotedMessage);
+```
+
+### 👥 Groups Pro
+
+```javascript
+// Get group info from invite link
+const info = await sock.groupGetInviteInfo('https://chat.whatsapp.com/xxx');
+
+// Join group via invite
+await sock.groupJoinViaInvite('https://chat.whatsapp.com/xxx');
+
+// Set announcement mode (admin only)
+await sock.groupSetAnnouncement(groupJid, true);
+
+// Set locked mode (admin only)
+await sock.groupSetLocked(groupJid, true);
+
+// Manage join requests
+const requests = await sock.groupRequestParticipantsList(groupJid);
+await sock.groupApproveParticipants(groupJid, [participant1, participant2]);
+await sock.groupRejectParticipants(groupJid, [participant3]);
+```
+
+### 👤 Profile Pro
+
+```javascript
+// Check if number exists on WhatsApp
+const result = await sock.checkNumber('1234567890');
+console.log(result.exists); // true/false
+
+// Update bio
+await sock.setBio('Hello, I am a bot!');
+
+// Update display name
+await sock.updateProfileName('My Bot');
+
+// Set profile picture
+await sock.setProfilePicture(jid, './avatar.jpg');
+
+// Remove profile picture
+await sock.removeProfilePicture(jid);
+```
+
+---
+
+## 🎮 Built-in Games
+
+8 fun games for your WhatsApp bot:
+
+```javascript
+const { blackjack, slotMachine, diceGame, coinFlip, roulette, rps, trivia, createMines } = require('ishumdz-bail');
+
+// Blackjack
+const game = blackjack('start', [], [], 100); // Start with 100 bet
+// game.playerHand, game.dealerHand, game.status
+
+// Slots
+const slots = slotMachine(100);
+// slots.reels, slots.payout
+
+// Dice
+const dice = diceGame(100, 'high'); // Bet on high (7-12)
+// dice.total, dice.dice1, dice.dice2
+
+// Coin Flip
+const flip = coinFlip(100, 'heads');
+// flip.result, flip.payout
+
+// Roulette
+const spin = roulette(100, 'red');
+// spin.number, spin.color, spin.payout
+
+// Rock Paper Scissors
+const game = rps('rock');
+// game.playerChoice, game.botChoice, game.result
+
+// Trivia
+const question = trivia(100);
+// question.question, question.options, question.answer
+
+// Mines
+const mines = createMines(5, 5, 5); // 5x5 grid, 5 mines
+const tile = revealTile(mines, 0, 0); // Reveal tile at (0,0)
+// tile.safe, tile.mine
+const cashout = cashoutMines(mines, 100); // Cash out
+// cashout.payout
+```
 
 ## 💬 Rich Response (GenAI Bubble)
 
