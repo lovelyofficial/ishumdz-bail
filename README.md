@@ -87,6 +87,10 @@ sock.ev.on('creds.update', saveCreds)
 | 🔎 **USync Username Protocol** | Username resolution baked into USync queries — resolve WA usernames alongside contacts in a single round-trip |
 | 📥 **Offline Node Processor** | Batch-processes pending stanzas received while offline, preventing message loss on reconnect |
 | 🔑 **Identity Change Handler** | Dedicated handler for Signal identity key changes — prevents session corruption when a contact re-registers |
+| 📣 **Newsletter/Channel Media Upload** | Full support for uploading images, videos, audio, stickers to channels using correct `/newsletter/newsletter-*` paths |
+| 😀 **Newsletter Reactions** | React to channel messages with emojis, track votes, and manage newsletter engagement |
+| 📊 **Poll Voting** | Create polls, track encrypted votes, display results, and support multiple selection polls |
+| 🎮 **Built-in Games** | 8 games: Blackjack, Slots, Dice, Coin Flip, Roulette, Mines, Trivia, Rock Paper Scissors |
 
 ---
 
