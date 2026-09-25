@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:ff6b6b,40:f06595,100:845ef7&text=ishu-md&fontAlignY=40&fontSize=44&fontColor=ffffff&desc=Stable%20WhatsApp%20Web%20API%20Fork%20for%20Production%20Bots&descAlignY=60&descSize=16" alt="Header Banner" />
+<img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:ff6b6b,40:f06595,100:845ef7&text=ishumdz-bail&fontAlignY=40&fontSize=44&fontColor=ffffff&desc=Stable%20WhatsApp%20Web%20API%20Fork%20for%20Production%20Bots&descAlignY=60&descSize=16" alt="Header Banner" />
 
 <br/>
 
@@ -13,7 +13,7 @@
 <br/><br/>
 
 
-# 🧑‍💻 ishu-md
+# 🧑‍💻 ishumdz-bail
 
 <p>
   <img src="https://img.shields.io/badge/Node.js-%3E%3D20-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
@@ -24,7 +24,7 @@
 </p>
 
 <p>
-  <img src="https://img.shields.io/npm/v/ishu-md?style=flat-square&color=25D366&label=npm" />
+  <img src="https://img.shields.io/npm/v/ishumdz-bail?style=flat-square&color=25D366&label=npm" />
   <img src="https://img.shields.io/badge/maintained%20by-Lovely-black?style=flat-square" />
 </p>
 
@@ -39,9 +39,9 @@ Built on WebSocket for speed, stability, and full multi-device support.
 
 ---
 
-## ✨ What is ishu-md?
+## ✨ What is ishumdz-bail?
 
-**ishu-md** (`ishu-md`) is a powerful, open-source WhatsApp Web library built on top of the Baileys protocol stack — extended with features not found in any other public fork. It connects directly to WhatsApp's multi-device WebSocket protocol. No Selenium, no Puppeteer, no browser overhead.
+**ishumdz-bail** (`ishumdz-bail`) is a powerful, open-source WhatsApp Web library built on top of the Baileys protocol stack — extended with features not found in any other public fork. It connects directly to WhatsApp's multi-device WebSocket protocol. No Selenium, no Puppeteer, no browser overhead.
 
 > ⚡ **Node.js ≥ 20 required.**
 
@@ -50,11 +50,11 @@ Built on WebSocket for speed, stability, and full multi-device support.
 ## 🚀 Getting Started
 
 ```bash
-npm install ishu-md
+npm install ishumdz-bail
 ```
 
 ```javascript
-import { makeWASocket, useMultiFileAuthState } from 'ishu-md'
+import { makeWASocket, useMultiFileAuthState } from 'ishumdz-bail'
 
 const { state, saveCreds } = await useMultiFileAuthState('auth_info')
 const sock = makeWASocket({
@@ -102,7 +102,7 @@ Send messages that render as Meta AI-style bubbles inside WhatsApp. Supports mul
 // Markdown text
 await sock.sendMessage(jid, {
     richResponse: {
-        text: '**Hello** from *ishu-md*',
+        text: '**Hello** from *ishumdz-bail*',
         responseId: 'optional-uuid'
     }
 })
@@ -307,10 +307,10 @@ await sock.sendCodeBlock(jid, code, quoted, { noSelfSync: true })
 
 ## 🔄 Stability & Disconnect Handling
 
-ishu-md ships `classifyDisconnect()` — maps every WA status code into an actionable result:
+ishumdz-bail ships `classifyDisconnect()` — maps every WA status code into an actionable result:
 
 ```javascript
-import { classifyDisconnect } from 'ishu-md'
+import { classifyDisconnect } from 'ishumdz-bail'
 
 sock.ev.on('connection.update', ({ connection, lastDisconnect }) => {
     if (connection === 'close') {
@@ -348,7 +348,7 @@ sock.ev.on('connection.update', ({ connection, lastDisconnect }) => {
 | Graceful close | recoverable | ✅ | 2 s |
 | Unknown | unknown | ✅ | 15 s |
 
-> **Important:** Code 515 (`restartRequired`) is WhatsApp's normal post-pairing signal. ishu-md correctly treats it as recoverable with 0 ms backoff — other forks incorrectly mark it as fatal, causing bots to stop after first pair.
+> **Important:** Code 515 (`restartRequired`) is WhatsApp's normal post-pairing signal. ishumdz-bail correctly treats it as recoverable with 0 ms backoff — other forks incorrectly mark it as fatal, causing bots to stop after first pair.
 
 ---
 
@@ -357,7 +357,7 @@ sock.ev.on('connection.update', ({ connection, lastDisconnect }) => {
 Anti-ban pacing calculator — wire into your send path before each `sendMessage`:
 
 ```javascript
-import { RateLimiter } from 'ishu-md'
+import { RateLimiter } from 'ishumdz-bail'
 
 const limiter = new RateLimiter({
     maxPerMinute: 8,
@@ -481,14 +481,14 @@ await sock.updateMediaMessage(message)
 
 ## 🎮 Games
 
-Built-in games for your WhatsApp bot! Import from `ishu-md`:
+Built-in games for your WhatsApp bot! Import from `ishumdz-bail`:
 
 ```javascript
 import { 
     blackjack, slotMachine, diceGame, 
     coinFlip, roulette, rps, trivia,
     createMines, revealTile, cashoutMines 
-} from 'ishu-md'
+} from 'ishumdz-bail'
 ```
 
 ### 🃏 Blackjack
@@ -655,7 +655,7 @@ await sock.sendMessage(jid, {
 ### 📈 Track Poll Votes
 
 ```javascript
-import { getAggregateVotesInPollMessage } from 'ishu-md'
+import { getAggregateVotesInPollMessage } from 'ishumdz-bail'
 
 // Store messages
 const messageStore = new Map()

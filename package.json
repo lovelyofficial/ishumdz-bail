@@ -1,5 +1,5 @@
 {
-    "name": "ishu-md",
+    "name": "ishumdz-bail",
     "version": "1.0.0",
     "description": "WhatsApp API Modification By Lovely",
     "keywords": [
@@ -12,14 +12,14 @@
         "automation",
         "whatsapp-api", 
         "baileys-mod",
-        "ishu-md",
+        "ishumdz-bail",
         "lovely",
         "dtz",
         "wa-bot"
     ],
     "homepage": "https://ishanx-pro.site.je",
     "repository": {
-        "url": "https://www.npmjs.com/package/ishu-md"
+        "url": "https://www.npmjs.com/package/ishumdz-bail"
     },
     "license": "MIT",
     "author": "Lovely",
