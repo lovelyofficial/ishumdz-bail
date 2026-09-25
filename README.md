@@ -6,7 +6,7 @@
 <!-- Rounded + border image -->
 <a href="https://ishanx-pro.site.je">
   <kbd>
-    <img src="https://i.ibb.co/KjfHTDhN/file-00000000a86881f8801b23682cb9bf66.png" alt="WhatsApp Baileys 2026" width="720" />
+    <img src="https://i.postimg.cc/9Q6q2Pv6/IMG-20260925-WA4965.jpg" alt="WhatsApp Baileys 2026" width="720" />
   </kbd>
 </a>
 
