@@ -1,26 +1,60 @@
 <div align="center">
 
 ```
-╔═══════════════════════════════════════════════════════════════════╗
-║                                                                   ║
-║     ██╗  ██╗██████╗  █████╗ ███████╗████████╗                    ║
-║     ██║  ██║██╔══██╗██╔══██╗██╔════╝╚══██╔══╝                    ║
-║     ███████║██████╔╝███████║███████╗   ██║                       ║
-║     ██╔══██║██╔══██╗██╔══██║╚════██║   ██║                       ║
-║     ██║  ██║██████╔╝██║  ██║███████║   ██║                       ║
-║     ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝                       ║
-║                                                                   ║
-║     ██████╗ ██╗   ██╗██╗███████╗                                ║
-║     ██╔══██╗██║   ██║██║╚══███╔╝                                ║
-║     ██║  ██║██║   ██║██║  ███╔╝                                 ║
-║     ██║  ██║██║   ██║██║ ███╔╝                                  ║
-║     ██████╔╝╚██████╔╝██║███████╗                                ║
-║     ╚═════╝  ╚═════╝ ╚═╝╚══════╝                                ║
-║                                                                   ║
-║              WhatsApp Web API Fork for Bots                      ║
-║                  By Lovely ❤️                                    ║
-║                                                                   ║
-╚═══════════════════════════════════════════════════════════════════╝
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                         📱 MAIN FEATURES                                 ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║                                                                           ║
+║  ┌─────────────────────────────────────────────────────────────────────┐  ║
+║  │ 🎮 GAMES            │ 📞 VOIP CALLER      │ ⚡ PRO METHODS         │  ║
+║  │ ├─ Blackjack         │ ├─ Auto Answer       │ ├─ sendPoll            │  ║
+║  │ ├─ Slots             │ ├─ Audio Playback    │ ├─ sendPollVote        │  ║
+║  │ ├─ Dice              │ └─ VoipClient        │ ├─ editMessage         │  ║
+║  │ ├─ Coin Flip         │                     │ ├─ deleteMessage        │  ║
+║  │ ├─ Roulette          │ 📊 POLLS            │ ├─ pinMessage          │  ║
+║  │ ├─ Mines             │ ├─ Create Poll       │ ├─ starMessage         │  ║
+║  │ ├─ Trivia            │ ├─ Vote Poll         │ ├─ reactMessage        │  ║
+║  │ └─ RPS               │ └─ Get Results       │ ├─ sendPresence        │  ║
+║  └─────────────────────────────────────────────────────────────────────┘  ║
+║                                                                           ║
+║  ┌─────────────────────────────────────────────────────────────────────┐  ║
+║  │ 📢 NEWSLETTER       │ 🟢 STATUS            │ 💬 CHAT               │  ║
+║  │ ├─ channelVote       │ ├─ sendText           │ ├─ editMessage        │  ║
+║  │ ├─ newsletterReact   │ ├─ sendMedia          │ ├─ deleteMessage      │  ║
+║  │ ├─ getMessages       │ ├─ readStatus         │ ├─ pinMessage         │  ║
+║  │ ├─ searchChannels    │ └─ reactStatus        │ ├─ unpinMessage       │  ║
+║  │ └─ listChannels      │                     │ ├─ starMessage        │  ║
+║  └─────────────────────────────────────────────────────────────────────┘  ║
+║                                                                           ║
+║  ┌─────────────────────────────────────────────────────────────────────┐  ║
+║  │ 👥 GROUPS            │ 👤 PROFILE           │ 📰 MEDIA             │  ║
+║  │ ├─ Get Invite Info   │ ├─ checkNumber        │ ├─ Newsletter Paths   │  ║
+║  │ ├─ Join via Invite   │ ├─ setBio             │ ├─ Image Upload       │  ║
+║  │ ├─ Set Announcement  │ ├─ updateName         │ ├─ Video Upload       │  ║
+║  │ ├─ Set Locked        │ ├─ setProfilePic      │ ├─ Audio Upload       │  ║
+║  │ ├─ Request List      │ ├─ removeProfilePic   │ ├─ Document Upload    │  ║
+║  │ ├─ Approve           │ └─ rejectCall         │ └─ Sticker Upload     │  ║
+║  │ └─ Reject            │                     │                     │  ║
+║  └─────────────────────────────────────────────────────────────────────┘  ║
+║                                                                           ║
+║  ✅ No Browser Required  ✅ Multi-Device  ✅ WebSocket Based             ║
+║  ✅ Active Maintenance   ✅ MIT License   ✅ Full API Coverage           ║
+║                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+```
+
+<br/>
+
+```
+     ██╗  ██╗██████╗  █████╗ ███████╗████████╗
+     ██║  ██║██╔══██╗██╔══██╗██╔════╝╚══██╔══╝
+     ███████║██████╔╝███████║███████╗   ██║   
+     ██╔══██║██╔══██╗██╔══██║╚════██║   ██║   
+     ██║  ██║██████╔╝██║  ██║███████║   ██║   
+     ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝   
+
+              WhatsApp Web API Fork
+                    By Lovely ❤️
 ```
 
 <img src="https://i.postimg.cc/9Q6q2Pv6/IMG-20260925-WA4965.jpg" alt="ishumdz-bail" width="700" />
@@ -40,54 +74,11 @@ Built on WebSocket for speed, stability, and full multi-device support.
 
 ---
 
-## 📋 Table of Contents
-
-- [✨ What is ishumdz-bail?](#-what-is-ishumdz-bail)
-- [🚀 Installation](#-installation)
-- [⚡ Quick Start](#-quick-start)
-- [🎯 Features Overview](#-features-overview)
-- [🎮 Games](#-games)
-- [📞 VoIP Caller](#-voip-caller)
-- [⚡ Pro Methods](#-pro-methods)
-- [📊 Polls](#-polls)
-- [📢 Newsletter/Channels](#-newsletterchannels)
-- [🟢 Status/Stories](#-statusstories)
-- [💬 Chat Actions](#-chat-actions)
-- [👥 Group Management](#-group-management)
-- [👤 Profile Management](#-profile-management)
-- [📰 Newsletter Media](#-newsletter-media)
-- [🔌 API Reference](#-api-reference)
-- [📝 Examples](#-examples)
-
----
-
-## ✨ What is ishumdz-bail?
-
-**ishumdz-bail** is a powerful, open-source WhatsApp Web library built on top of the Baileys protocol stack — extended with features not found in any other public fork.
-
-**Why choose ishumdz-bail?**
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  ✅ No Browser Required     │  ✅ Multi-Device Support          │
-│  ✅ WebSocket Based         │  ✅ Full API Coverage             │
-│  ✅ Built-in Games (8)      │  ✅ VoIP Call Answer              │
-│  ✅ Pro Methods (34)        │  ✅ Newsletter/Channel Support    │
-│  ✅ Active Maintenance      │  ✅ MIT Licensed                  │
-└─────────────────────────────────────────────────────────────────┘
-```
-
----
-
 ## 🚀 Installation
 
 ```bash
 npm install ishumdz-bail
 ```
-
-**Requirements:**
-- Node.js ≥ 20
-- npm or yarn
 
 ---
 
@@ -102,200 +93,82 @@ const sock = makeWASocket({
     auth: state,
     syncFullHistory: false,
     aiLabel: true,
-    autoAnswer: false,
 });
+
+attachProMethods(sock);
 
 sock.ev.on('creds.update', saveCreds);
 
 sock.ev.on('connection.update', ({ connection }) => {
     if (connection === 'open') {
-        console.log('✅ Connected to WhatsApp!');
-        
-        // Attach Pro methods
-        attachProMethods(sock);
+        console.log('✅ Connected!');
     }
 });
 ```
 
 ---
 
-## 🎯 Features Overview
-
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                          ISHUMDZ-BAIL FEATURES                         │
-├─────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
-│  🎮 GAMES (8)        │  📞 VOIP (3)        │  ⚡ PRO METHODS (34)     │
-│  ├─ Blackjack         │  ├─ VoipClient       │  ├─ sendPoll             │
-│  ├─ Slots             │  ├─ ActiveCall       │  ├─ sendPollVote         │
-│  ├─ Dice              │  └─ AudioFeeder      │  ├─ editMessage          │
-│  ├─ Coin Flip         │                      │  ├─ deleteMessage        │
-│  ├─ Roulette          │  📊 POLLS (3)       │  ├─ pinMessage           │
-│  ├─ Mines             │  ├─ sendPoll         │  ├─ reactMessage         │
-│  ├─ Trivia            │  ├─ sendPollVote     │  ├─ sendStatusText       │
-│  └─ Rock Paper        │  └─ getAggregate     │  ├─ checkNumber          │
-│     Scissors          │     Votes            │  └─ ... and more!        │
-│                                                                         │
-│  📢 NEWSLETTER (6)    │  🟢 STATUS (4)      │  💬 CHAT (8)            │
-│  ├─ channelVote       │  ├─ sendStatusText   │  ├─ editMessage          │
-│  ├─ newsletterReact   │  ├─ sendStatusMedia  │  ├─ deleteMessage        │
-│  ├─ newsletterGet     │  ├─ readStatus       │  ├─ pinMessage           │
-│  │   Messages         │  └─ reactStatus      │  ├─ unpinMessage         │
-│  ├─ newsletterSearch  │                      │  ├─ starMessage          │
-│  └─ newsletterList    │  👥 GROUPS (7)      │  ├─ sendPresence         │
-│                      │  ├─ groupGetInvite   │  └─ reply                │
-│  👤 PROFILE (6)      │  ├─ groupJoinVia     │                         │
-│  ├─ checkNumber       │  │   Invite          │                         │
-│  ├─ setBio            │  ├─ groupSet         │                         │
-│  ├─ updateProfileName │  │   Announcement    │                         │
-│  ├─ setProfilePicture │  ├─ groupSetLocked   │                         │
-│  ├─ removeProfile     │  ├─ groupRequest     │                         │
-│  │   Picture          │  │   Participants    │                         │
-│  └─ rejectCall        │  ├─ groupApprove     │                         │
-│                       │  │   Participants    │                         │
-│                       │  └─ groupReject      │                         │
-│                       │     Participants    │                         │
-│                                                                         │
-└─────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
 ## 🎮 Games
-
-8 built-in games for your WhatsApp bot:
 
 ```javascript
 const { blackjack, slotMachine, diceGame, coinFlip, roulette, rps, trivia, createMines } = require('ishumdz-bail');
-```
 
-### 🃏 Blackjack
+// 🃏 Blackjack
+const bj = blackjack('start', [], [], 100);
+// bj.playerHand, bj.dealerHand, bj.status
 
-```javascript
-// Start a game
-const game = blackjack('start', [], [], 100);
-console.log(game.playerHand); // [{suit:'♠️',value:'A'}, {suit:'♥️',value:'K'}]
-console.log(game.dealerHand); // [{suit:'♦️',value:'5'}, {suit:'♣️',value:'?'}]
-console.log(game.status);     // 'playing'
-
-// Hit (draw card)
-const hit = blackjack('hit', game.playerHand, game.dealerHand, 100);
-
-// Stand (end turn)
-const stand = blackjack('stand', game.playerHand, game.dealerHand, 100);
-console.log(stand.status);    // 'win', 'lose', or 'push'
-```
-
-### 🎰 Slots
-
-```javascript
+// 🎰 Slots
 const slots = slotMachine(100);
-console.log(slots.reels);   // ['🍒', '🍋', '🍊']
-console.log(slots.payout);  // 0-500 (multiplier)
-```
+// slots.reels, slots.payout
 
-### 🎲 Dice
+// 🎲 Dice
+const dice = diceGame(100, 'high');
+// dice.total, dice.dice1, dice.dice2
 
-```javascript
-const dice = diceGame(100, 'high'); // 'high', 'low', or specific number
-console.log(dice.dice1);  // 1-6
-console.log(dice.dice2);  // 1-6
-console.log(dice.total);  // 2-12
-console.log(dice.win);    // true/false
-```
+// 🪙 Coin Flip
+const flip = coinFlip(100, 'heads');
+// flip.result, flip.payout
 
-### 🪙 Coin Flip
+// 🎡 Roulette
+const spin = roulette(100, 'red');
+// spin.number, spin.color
 
-```javascript
-const flip = coinFlip(100, 'heads'); // 'heads' or 'tails'
-console.log(flip.result);  // 'heads' or 'tails'
-console.log(flip.payout);  // 0 or 200
-```
+// ✊ Rock Paper Scissors
+const game = rps('rock');
+// game.playerChoice, game.botChoice, game.result
 
-### 🎡 Roulette
+// 🧠 Trivia
+const q = trivia(100);
+// q.question, q.options, q.answer
 
-```javascript
-const spin = roulette(100, 'red'); // 'red', 'black', 'green', or number
-console.log(spin.number);  // 0-36
-console.log(spin.color);   // 'red', 'black', or 'green'
-console.log(spin.payout);  // 0-3600
-```
-
-### ✊ Rock Paper Scissors
-
-```javascript
-const game = rps('rock'); // 'rock', 'paper', or 'scissors'
-console.log(game.playerChoice);  // 'rock'
-console.log(game.botChoice);     // 'paper'
-console.log(game.result);        // 'win', 'lose', or 'draw'
-```
-
-### 🧠 Trivia
-
-```javascript
-const question = trivia(100);
-console.log(question.question);  // 'What is the capital of France?'
-console.log(question.options);   // ['A) Paris', 'B) London', ...]
-console.log(question.answer);    // 'A'
-```
-
-### 💣 Mines
-
-```javascript
-// Create a 5x5 grid with 5 mines
-const game = createMines(5, 5, 5);
-console.log(game.totalSafe);  // 20
-
-// Reveal a tile
-const tile = revealTile(game, 0, 0);
-console.log(tile.safe);   // true (diamond) or false (mine)
-console.log(tile.mine);   // true or false
-
-// Cash out
-const cashout = cashoutMines(game, 100);
-console.log(cashout.payout);  // based on revealed tiles
+// 💣 Mines
+const mines = createMines(5, 5, 5);
+const tile = revealTile(mines, 0, 0);
+const cashout = cashoutMines(mines, 100);
 ```
 
 ---
 
 ## 📞 VoIP Caller
 
-Answer incoming WhatsApp calls with audio playback:
-
 ```javascript
 const { makeWASocket, enableCallAutoAnswer, getActiveVoipClient } = require('ishumdz-bail');
 
 const sock = makeWASocket({ auth: state });
 
-// Enable auto-answer
+// Auto-answer calls with audio
 sock.enableCallAutoAnswer({
-    audio: './welcome.wav',        // Audio file (MP3/WAV)
-    autoAnswer: true,              // Auto-answer calls
-    answerDelayMs: 200,            // Delay before answer
-    durationMs: 60000,             // Max duration (60s)
-    loop: true,                    // Loop audio
-    onCall: (call) => {},          // Incoming call callback
-    onAnswer: (call) => {},        // Answered callback
-    onEnd: (call, reason) => {}    // Ended callback
+    audio: './welcome.wav',
+    autoAnswer: true,
+    answerDelayMs: 200,
+    durationMs: 60000,
+    loop: true
 });
-```
 
-### Manual Call Handling
-
-```javascript
+// Manual call handling
 sock.ev.on('call', async ([call]) => {
     if (call.status === 'offer') {
-        console.log(`📞 Incoming ${call.isVideo ? 'video' : 'voice'} call from ${call.from}`);
-        
-        // Reject call
         await sock.rejectCall(call.id, call.from);
-        
-        // Or accept with VoIP client
-        const voipClient = getActiveVoipClient();
-        if (voipClient?.activeCall) {
-            voipClient.activeCall.accept('./audio.wav');
-        }
     }
 });
 ```
@@ -304,160 +177,82 @@ sock.ev.on('call', async ([call]) => {
 
 ## ⚡ Pro Methods
 
-34 convenience methods for easier development:
-
 ```javascript
 const { makeWASocket, attachProMethods } = require('ishumdz-bail');
 
 const sock = makeWASocket({ auth: state });
-attachProMethods(sock); // Attach all Pro methods
+attachProMethods(sock); // Attach all 34 Pro methods
 ```
 
----
-
-## 📊 Polls
+### 📊 Polls
 
 ```javascript
-// Create a poll
-await sock.sendPoll(jid, {
-    name: 'What is your favorite color?',
-    values: ['Red', 'Blue', 'Green', 'Yellow'],
-    selectableCount: 1
-});
-
-// Vote on a poll
-await sock.sendPollVote(jid, pollMessage, ['Red']);
-
-// Get poll results
-const votes = sock.getAggregatePollVotes(pollMessage);
+await sock.sendPoll(jid, { name: 'Vote?', values: ['Yes', 'No'] });
+await sock.sendPollVote(jid, pollMsg, ['Yes']);
+const votes = sock.getAggregatePollVotes(pollMsg);
 ```
 
----
-
-## 📢 Newsletter/Channels
+### 📢 Newsletter/Channels
 
 ```javascript
-// Smart channel poll vote (auto-resolves links)
-await sock.channelVote('https://whatsapp.com/channel/xxx/123', 1);
-
-// React to channel post
-await sock.newsletterReact(channelJid, serverId, '👍');
-
-// Get channel messages (decoded)
-const messages = await sock.newsletterGetMessages(channelJid, 50);
-
-// Search channels
-const results = await sock.newsletterSearch('technology');
-
-// List followed channels
+await sock.channelVote('https://whatsapp.com/channel/xxx', 1);
+await sock.newsletterReact(jid, serverId, '👍');
+const msgs = await sock.newsletterGetMessages(jid, 50);
+const results = await sock.newsletterSearch('tech');
 const channels = await sock.newsletterList();
 ```
 
----
-
-## 🟢 Status/Stories
+### 🟢 Status/Stories
 
 ```javascript
-// Send text status
-await sock.sendStatusText('Hello World!', {
-    backgroundColor: '#25D366',
-    font: 1
-});
-
-// Send media status
-await sock.sendStatusMedia('./photo.jpg', {
-    type: 'image',
-    caption: 'My status!'
-});
-
-// React to status
-await sock.reactStatus(statusKey, '❤️');
+await sock.sendStatusText('Hello!', { backgroundColor: '#25D366' });
+await sock.sendStatusMedia('./photo.jpg', { type: 'image' });
+await sock.reactStatus(key, '❤️');
 ```
 
----
-
-## 💬 Chat Actions
+### 💬 Chat
 
 ```javascript
-// Edit a message
-await sock.editMessage(jid, messageKey, 'Updated text!');
-
-// Delete a message
-await sock.deleteMessage(jid, messageKey);
-
-// Pin a message (86400 = 24h, 604800 = 7d, 2592000 = 30d)
-await sock.pinMessage(jid, messageKey, 86400);
-
-// Unpin a message
-await sock.unpinMessage(jid, messageKey);
-
-// Star/unstar a message
-await sock.starMessage(jid, messageKey, true);
-
-// React to a message
-await sock.reactMessage(jid, messageKey, '😂');
-
-// Send presence (typing indicator)
+await sock.editMessage(jid, key, 'Updated!');
+await sock.deleteMessage(jid, key);
+await sock.pinMessage(jid, key, 86400);
+await sock.starMessage(jid, key, true);
+await sock.reactMessage(jid, key, '😂');
 await sock.sendPresence(jid, 'composing');
-
-// Quick reply with quote
-await sock.reply(jid, 'This is a reply!', quotedMessage);
+await sock.reply(jid, 'Reply!', quotedMsg);
 ```
 
----
-
-## 👥 Group Management
+### 👥 Groups
 
 ```javascript
-// Get group info from invite link
 const info = await sock.groupGetInviteInfo('https://chat.whatsapp.com/xxx');
-
-// Join group via invite
 await sock.groupJoinViaInvite('https://chat.whatsapp.com/xxx');
-
-// Set announcement mode (admin only)
-await sock.groupSetAnnouncement(groupJid, true);
-
-// Set locked mode (admin only)
-await sock.groupSetLocked(groupJid, true);
-
-// Manage join requests
-const requests = await sock.groupRequestParticipantsList(groupJid);
-await sock.groupApproveParticipants(groupJid, [participant1, participant2]);
-await sock.groupRejectParticipants(groupJid, [participant3]);
+await sock.groupSetAnnouncement(jid, true);
+await sock.groupSetLocked(jid, true);
+const requests = await sock.groupRequestParticipantsList(jid);
+await sock.groupApproveParticipants(jid, [user1]);
+await sock.groupRejectParticipants(jid, [user2]);
 ```
 
----
-
-## 👤 Profile Management
+### 👤 Profile
 
 ```javascript
-// Check if number exists on WhatsApp
-const result = await sock.checkNumber('1234567890');
-console.log(result.exists); // true/false
-
-// Update bio
-await sock.setBio('Hello, I am a bot!');
-
-// Update display name
-await sock.updateProfileName('My Bot');
-
-// Set profile picture
+const check = await sock.checkNumber('1234567890');
+await sock.setBio('My bot');
+await sock.updateProfileName('Bot Name');
 await sock.setProfilePicture(jid, './avatar.jpg');
-
-// Remove profile picture
 await sock.removeProfilePicture(jid);
+await sock.rejectCall(callId, callFrom);
 ```
 
 ---
 
-## 📰 Newsletter Media
-
-Upload media to channels with correct paths:
+## 📰 Newsletter Media Paths
 
 ```javascript
 const { NEWSLETTER_MEDIA_PATH_MAP } = require('ishumdz-bail');
 
+// All paths for channel uploads
 console.log(NEWSLETTER_MEDIA_PATH_MAP);
 // {
 //   image: '/newsletter/newsletter-image',
@@ -473,144 +268,103 @@ console.log(NEWSLETTER_MEDIA_PATH_MAP);
 
 ---
 
-## 🔌 API Reference
+## 📋 All Features List
 
-### Core Functions
-
-| Function | Description |
-|----------|-------------|
-| `makeWASocket(config)` | Create WhatsApp socket |
-| `useMultiFileAuthState(dir)` | Multi-file auth state |
-| `attachProMethods(sock)` | Attach Pro methods |
-| `enableCallAutoAnswer(sock, opts)` | Enable VoIP auto-answer |
-| `getActiveVoipClient()` | Get active VoIP client |
-| `delay(ms)` | Delay execution |
-
-### Games
-
-| Function | Description |
-|----------|-------------|
-| `blackjack(action, player, dealer, bet)` | Play blackjack |
-| `slotMachine(bet)` | Play slots |
-| `diceGame(bet, prediction)` | Play dice |
-| `coinFlip(bet, choice)` | Flip coin |
-| `roulette(bet, choice)` | Play roulette |
-| `rps(choice)` | Rock Paper Scissors |
-| `trivia(bet)` | Play trivia |
-| `createMines(rows, cols, mines)` | Create mines game |
-| `revealTile(game, row, col)` | Reveal tile |
-| `cashoutMines(game, bet)` | Cash out |
-
-### Pro Methods
-
-| Function | Description |
-|----------|-------------|
-| `sendPoll(jid, data)` | Create poll |
-| `sendPollVote(jid, key, options)` | Vote on poll |
-| `editMessage(jid, key, text)` | Edit message |
-| `deleteMessage(jid, key)` | Delete message |
-| `pinMessage(jid, key, duration)` | Pin message |
-| `unpinMessage(jid, key)` | Unpin message |
-| `starMessage(jid, key, star)` | Star message |
-| `reactMessage(jid, key, emoji)` | React to message |
-| `sendPresence(jid, presence)` | Send presence |
-| `reply(jid, text, quoted)` | Reply with quote |
-| `checkNumber(phone)` | Check WhatsApp number |
-| `setBio(text)` | Update bio |
-| `updateProfileName(name)` | Update name |
-| `setProfilePicture(jid, content)` | Set profile pic |
-| `removeProfilePicture(jid)` | Remove profile pic |
-| `sendStatusText(text, options)` | Send text status |
-| `sendStatusMedia(media, options)` | Send media status |
-| `readStatus(key)` | Mark status as read |
-| `reactStatus(key, emoji)` | React to status |
-| `channelVote(target, option)` | Smart channel vote |
-| `newsletterReact(jid, id, reaction)` | React to channel |
-| `newsletterGetMessages(jid, count)` | Get channel messages |
-| `newsletterSearch(query)` | Search channels |
-| `newsletterList()` | List followed channels |
-| `groupGetInviteInfo(code)` | Get group info |
-| `groupJoinViaInvite(code)` | Join via invite |
-| `groupSetAnnouncement(jid, bool)` | Admin-only messages |
-| `groupSetLocked(jid, bool)` | Admin-only edit |
-| `groupRequestParticipantsList(jid)` | Pending requests |
-| `groupApproveParticipants(jid, list)` | Approve requests |
-| `groupRejectParticipants(jid, list)` | Reject requests |
-| `rejectCall(callId, from)` | Reject call |
-
----
-
-## 📝 Examples
-
-### Basic Bot
-
-```javascript
-const { makeWASocket, useMultiFileAuthState, attachProMethods } = require('ishumdz-bail');
-
-async function startBot() {
-    const { state, saveCreds } = await useMultiFileAuthState('auth');
-    
-    const sock = makeWASocket({
-        auth: state,
-        printQRInTerminal: true
-    });
-    
-    attachProMethods(sock);
-    
-    sock.ev.on('creds.update', saveCreds);
-    
-    sock.ev.on('messages.upsert', async ({ messages }) => {
-        const msg = messages[0];
-        if (!msg.key.fromMe && msg.message?.conversation) {
-            const text = msg.message.conversation.toLowerCase();
-            
-            if (text === '!ping') {
-                await sock.reply(msg.key.remoteJid, 'Pong! 🏓', msg);
-            }
-            
-            if (text === '!slots') {
-                const slots = slotMachine(100);
-                await sock.reply(msg.key.remoteJid, 
-                    `🎰 Slots: ${slots.reels.join(' | ')}\nPayout: ${slots.payout}`, msg);
-            }
-        }
-    });
-}
-
-startBot();
 ```
-
-### Call Auto-Answer Bot
-
-```javascript
-const { makeWASocket, useMultiFileAuthState, enableCallAutoAnswer } = require('ishumdz-bail');
-
-async function startCallBot() {
-    const { state, saveCreds } = await useMultiFileAuthState('auth');
-    
-    const sock = makeWASocket({ auth: state });
-    
-    sock.ev.on('creds.update', saveCreds);
-    
-    sock.ev.on('connection.update', ({ connection }) => {
-        if (connection === 'open') {
-            sock.enableCallAutoAnswer({
-                audio: './welcome.wav',
-                autoAnswer: true
-            });
-            console.log('📞 Call bot ready!');
-        }
-    });
-}
-
-startCallBot();
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           COMPLETE FEATURE LIST                             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  🎮 GAMES (8 functions)                                                    │
+│  ├── blackjack(action, playerHand, dealerHand, bet)                        │
+│  ├── slotMachine(bet)                                                      │
+│  ├── diceGame(bet, prediction)                                             │
+│  ├── coinFlip(bet, choice)                                                 │
+│  ├── roulette(bet, choice)                                                 │
+│  ├── rps(choice)                                                           │
+│  ├── trivia(bet)                                                           │
+│  ├── createMines(rows, cols, mineCount)                                    │
+│  ├── revealTile(game, row, col)                                            │
+│  └── cashoutMines(game, bet)                                               │
+│                                                                             │
+│  📞 VOIP (3 functions)                                                     │
+│  ├── VoipClient                                                            │
+│  ├── ActiveCall                                                             │
+│  ├── AudioFeeder                                                            │
+│  ├── VideoFeeder                                                            │
+│  ├── enableCallAutoAnswer(sock, options)                                   │
+│  └── getActiveVoipClient()                                                 │
+│                                                                             │
+│  ⚡ PRO METHODS (34 functions)                                              │
+│  ├── sendPoll(jid, pollData)                                               │
+│  ├── sendPollVote(jid, pollKey, options)                                   │
+│  ├── getAggregatePollVotes(pollMsg)                                        │
+│  ├── channelVote(target, option)                                           │
+│  ├── newsletterVoteMessage(jid, serverId, option)                          │
+│  ├── newsletterReact(jid, serverId, reaction)                              │
+│  ├── newsletterGetMessages(jid, count)                                     │
+│  ├── newsletterSearch(query)                                               │
+│  ├── newsletterList()                                                      │
+│  ├── sendStatusText(text, options)                                         │
+│  ├── sendStatusMedia(media, options)                                       │
+│  ├── readStatus(key)                                                       │
+│  ├── reactStatus(key, emoji)                                               │
+│  ├── editMessage(jid, key, text)                                           │
+│  ├── deleteMessage(jid, key)                                               │
+│  ├── pinMessage(jid, key, duration)                                        │
+│  ├── unpinMessage(jid, key)                                                │
+│  ├── starMessage(jid, key, star)                                           │
+│  ├── reactMessage(jid, key, emoji)                                         │
+│  ├── sendPresence(jid, presence)                                           │
+│  ├── reply(jid, text, quoted)                                              │
+│  ├── checkNumber(phone)                                                    │
+│  ├── setBio(text)                                                          │
+│  ├── updateProfileName(name)                                               │
+│  ├── setProfilePicture(jid, content)                                       │
+│  ├── removeProfilePicture(jid)                                             │
+│  ├── rejectCall(callId, callFrom)                                          │
+│  ├── groupGetInviteInfo(code)                                              │
+│  ├── groupJoinViaInvite(code)                                              │
+│  ├── groupSetAnnouncement(jid, bool)                                       │
+│  ├── groupSetLocked(jid, bool)                                             │
+│  ├── groupRequestParticipantsList(jid)                                     │
+│  ├── groupApproveParticipants(jid, participants)                           │
+│  ├── groupRejectParticipants(jid, participants)                            │
+│  └── attachProMethods(sock)                                                │
+│                                                                             │
+│  📰 NEWSLETTER (8 functions)                                                │
+│  ├── NEWSLETTER_MEDIA_PATH_MAP                                              │
+│  ├── newsletterFetchMessages(jid, count, since, after)                     │
+│  ├── newsletterMetadata(type, query)                                       │
+│  ├── newsletterReactMessage(jid, serverId, reaction)                       │
+│  ├── newsletterUpdate(jid, settings)                                       │
+│  ├── newsletterCreate(name, description)                                   │
+│  ├── newsletterDelete(jid)                                                 │
+│  └── newsletterFollow(jid)                                                 │
+│                                                                             │
+│  📊 POLL VOTING (1 function)                                                │
+│  └── getAggregateVotesInPollMessage(pollMsg)                               │
+│                                                                             │
+│  🎯 CORE (10+ functions)                                                    │
+│  ├── makeWASocket(config)                                                  │
+│  ├── useMultiFileAuthState(dir)                                            │
+│  ├── makeCacheableSignalKeyStore(state, logger)                            │
+│  ├── DisconnectReason                                                       │
+│  ├── delay(ms)                                                              │
+│  ├── proto                                                                   │
+│  ├── encodeBinaryNode(frame)                                                │
+│  ├── decodeBinaryNode(buffer)                                               │
+│  ├── jidDecode(jid)                                                         │
+│  └── jidEncode(user, server)                                                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
 ## 📄 License
 
-MIT License - See [LICENSE](LICENSE) for details.
+MIT License
 
 ---
 
