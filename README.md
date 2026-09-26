@@ -13,7 +13,8 @@
 ║  │ ├─ Roulette          │ 📊 POLLS            │ ├─ pinMessage          │  ║
 ║  │ ├─ Mines             │ ├─ Create Poll       │ ├─ starMessage         │  ║
 ║  │ ├─ Trivia            │ ├─ Vote Poll         │ ├─ reactMessage        │  ║
-║  │ └─ RPS               │ └─ Get Results       │ ├─ sendPresence        │  ║
+║  │ ├─ RPS               │ └─ Get Results       │ ├─ sendPresence        │
+║  │ └─ +6 HTML Games     │                      │                        │  ║
 ║  └─────────────────────────────────────────────────────────────────────┘  ║
 ║                                                                           ║
 ║  ┌─────────────────────────────────────────────────────────────────────┐  ║
@@ -134,7 +135,7 @@ sock.ev.on('creds.update', saveCreds)
 | 📣 **Newsletter/Channel Media Upload** | Full support for uploading images, videos, audio, stickers to channels using correct `/newsletter/newsletter-*` paths |
 | 😀 **Newsletter Reactions** | React to channel messages with emojis, track votes, and manage newsletter engagement |
 | 📊 **Poll Voting** | Create polls, track encrypted votes, display results, and support multiple selection polls |
-| 🎮 **Built-in Games** | 8 games: Blackjack, Slots, Dice, Coin Flip, Roulette, Mines, Trivia, Rock Paper Scissors |
+| 🎮 **Built-in Games** | 8 text games (Blackjack, Slots, Dice, Coin Flip, Roulette, Mines, Trivia, RPS) + 6 live HTML games (Chess, Tic Tac Toe, Connect Four, 2048, Snake, Memory) playable inside chat |
 | 📞 **VoIP Caller** | Answer incoming calls with audio playback using WASM VoIP engine |
 | ⚡ **Pro Methods** | 34 convenience methods: Polls, Newsletter, Status, Chat, Groups, Profile |
 
@@ -754,6 +755,51 @@ import {
     createMines, revealTile, cashoutMines 
 } from 'ishumdz-bail'
 ```
+
+### 🕹️ Live HTML Games (playable inside chat!)
+
+Send fully interactive games that render as **Meta AI style live HTML cards** inside WhatsApp (GenAI HTML primitive) — board, AI opponent, score tracking, all running client-side in the chat window. English UI.
+
+```javascript
+import {
+    sendChess,        // ♚ Chess vs AI (minimax)
+    sendTicTacToe,    // 🎮 Tic Tac Toe vs AI (unbeatable)
+    sendConnectFour,  // 🔴 Connect Four vs AI (minimax depth 4)
+    send2048,         // 🔢 2048 swipe puzzle
+    sendSnake,        // 🐍 Snake (swipe + arrow keys)
+    sendMemory,       // 🧩 Memory Match (8 emoji pairs)
+    sendHtmlGame      // ⭐ send ANY custom HTML game
+} from 'ishumdz-bail'
+
+// One line each:
+await sendChess(sock, m.chat)
+await sendTicTacToe(sock, m.chat)
+await sendConnectFour(sock, m.chat)
+await send2048(sock, m.chat)
+await sendSnake(sock, m.chat)
+await sendMemory(sock, m.chat)
+```
+
+Bot command example:
+
+```javascript
+const games = {
+    chess: sendChess, ttt: sendTicTacToe, c4: sendConnectFour,
+    '2048': send2048, snake: sendSnake, memory: sendMemory
+}
+
+// inside messages.upsert handler:
+const cmd = text.replace('.', '').toLowerCase()
+if (games[cmd]) await games[cmd](sock, msg.key.remoteJid)
+```
+
+Custom game (your own HTML):
+
+```javascript
+await sendHtmlGame(sock, jid, '<style>...</style><body>...<script>/* your game */</script></body>', '🎯 My Game')
+```
+
+> ℹ️ Requires a WhatsApp client that supports GenAI HTML cards (recent Android/iOS). Older clients and WhatsApp Web will not render the card.
 
 ### 🃏 Blackjack
 
