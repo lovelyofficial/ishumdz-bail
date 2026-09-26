@@ -1,48 +1,3 @@
-
-```
-╔═══════════════════════════════════════════════════════════════════════════╗
-║                         📱 MAIN FEATURES                                 ║
-╠═══════════════════════════════════════════════════════════════════════════╣
-║                                                                           ║
-║  ┌─────────────────────────────────────────────────────────────────────┐  ║
-║  │ 🎮 GAMES            │ 📞 VOIP CALLER      │ ⚡ PRO METHODS         │  ║
-║  │ ├─ Blackjack         │ ├─ Auto Answer       │ ├─ sendPoll            │  ║
-║  │ ├─ Slots             │ ├─ Audio Playback    │ ├─ sendPollVote        │  ║
-║  │ ├─ Dice              │ └─ VoipClient        │ ├─ editMessage         │  ║
-║  │ ├─ Coin Flip         │                     │ ├─ deleteMessage        │  ║
-║  │ ├─ Roulette          │ 📊 POLLS            │ ├─ pinMessage          │  ║
-║  │ ├─ Mines             │ ├─ Create Poll       │ ├─ starMessage         │  ║
-║  │ ├─ Trivia            │ ├─ Vote Poll         │ ├─ reactMessage        │  ║
-║  │ ├─ RPS               │ └─ Get Results       │ ├─ sendPresence        │
-║  │ └─ +6 HTML Games     │                      │                        │  ║
-║  └─────────────────────────────────────────────────────────────────────┘  ║
-║                                                                           ║
-║  ┌─────────────────────────────────────────────────────────────────────┐  ║
-║  │ 📢 NEWSLETTER       │ 🟢 STATUS            │ 💬 CHAT               │  ║
-║  │ ├─ channelVote       │ ├─ sendText           │ ├─ editMessage        │  ║
-║  │ ├─ newsletterReact   │ ├─ sendMedia          │ ├─ deleteMessage      │  ║
-║  │ ├─ getMessages       │ ├─ readStatus         │ ├─ pinMessage         │  ║
-║  │ ├─ searchChannels    │ └─ reactStatus        │ ├─ unpinMessage       │  ║
-║  │ └─ listChannels      │                     │ ├─ starMessage        │  ║
-║  └─────────────────────────────────────────────────────────────────────┘  ║
-║                                                                           ║
-║  ┌─────────────────────────────────────────────────────────────────────┐  ║
-║  │ 👥 GROUPS            │ 👤 PROFILE           │ 📰 MEDIA             │  ║
-║  │ ├─ Get Invite Info   │ ├─ checkNumber        │ ├─ Newsletter Paths   │  ║
-║  │ ├─ Join via Invite   │ ├─ setBio             │ ├─ Image Upload       │  ║
-║  │ ├─ Set Announcement  │ ├─ updateName         │ ├─ Video Upload       │  ║
-║  │ ├─ Set Locked        │ ├─ setProfilePic      │ ├─ Audio Upload       │  ║
-║  │ ├─ Request List      │ ├─ removeProfilePic   │ ├─ Document Upload    │  ║
-║  │ ├─ Approve           │ └─ rejectCall         │ └─ Sticker Upload     │  ║
-║  │ └─ Reject            │                     │                     │  ║
-║  └─────────────────────────────────────────────────────────────────────┘  ║
-║                                                                           ║
-║  ✅ No Browser Required  ✅ Multi-Device  ✅ WebSocket Based             ║
-║  ✅ Active Maintenance   ✅ MIT License   ✅ Full API Coverage           ║
-║                                                                           ║
-╚═══════════════════════════════════════════════════════════════════════════╝
-```
-
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:ff6b6b,40:f06595,100:845ef7&text=ishumdz-bail&fontAlignY=40&fontSize=44&fontColor=ffffff&desc=Stable%20WhatsApp%20Web%20API%20Fork%20for%20Production%20Bots&descAlignY=60&descSize=16" alt="Header Banner" />
 
@@ -1080,3 +1035,51 @@ Made with ❤️ by **Lovely**
 ## 📄 License
 
 MIT
+
+---
+
+## 📱 Full Feature Overview
+
+```
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                         📱 MAIN FEATURES                                 ║
+╠═══════════════════════════════════════════════════════════════════════════╣
+║                                                                           ║
+║  ┌─────────────────────────────────────────────────────────────────────┐  ║
+║  │ 🎮 GAMES            │ 📞 VOIP CALLER      │ ⚡ PRO METHODS         │  ║
+║  │ ├─ Blackjack         │ ├─ Auto Answer       │ ├─ sendPoll            │  ║
+║  │ ├─ Slots             │ ├─ Audio Playback    │ ├─ sendPollVote        │  ║
+║  │ ├─ Dice              │ └─ VoipClient        │ ├─ editMessage         │  ║
+║  │ ├─ Coin Flip         │                     │ ├─ deleteMessage        │  ║
+║  │ ├─ Roulette          │ 📊 POLLS            │ ├─ pinMessage          │  ║
+║  │ ├─ Mines             │ ├─ Create Poll       │ ├─ starMessage         │  ║
+║  │ ├─ Trivia            │ ├─ Vote Poll         │ ├─ reactMessage        │  ║
+║  │ ├─ RPS               │ └─ Get Results       │ ├─ sendPresence        │
+║  │ └─ +6 HTML Games     │                      │                        │  ║
+║  └─────────────────────────────────────────────────────────────────────┘  ║
+║                                                                           ║
+║  ┌─────────────────────────────────────────────────────────────────────┐  ║
+║  │ 📢 NEWSLETTER       │ 🟢 STATUS            │ 💬 CHAT               │  ║
+║  │ ├─ channelVote       │ ├─ sendText           │ ├─ editMessage        │  ║
+║  │ ├─ newsletterReact   │ ├─ sendMedia          │ ├─ deleteMessage      │  ║
+║  │ ├─ getMessages       │ ├─ readStatus         │ ├─ pinMessage         │  ║
+║  │ ├─ searchChannels    │ └─ reactStatus        │ ├─ unpinMessage       │  ║
+║  │ └─ listChannels      │                     │ ├─ starMessage        │  ║
+║  └─────────────────────────────────────────────────────────────────────┘  ║
+║                                                                           ║
+║  ┌─────────────────────────────────────────────────────────────────────┐  ║
+║  │ 👥 GROUPS            │ 👤 PROFILE           │ 📰 MEDIA             │  ║
+║  │ ├─ Get Invite Info   │ ├─ checkNumber        │ ├─ Newsletter Paths   │  ║
+║  │ ├─ Join via Invite   │ ├─ setBio             │ ├─ Image Upload       │  ║
+║  │ ├─ Set Announcement  │ ├─ updateName         │ ├─ Video Upload       │  ║
+║  │ ├─ Set Locked        │ ├─ setProfilePic      │ ├─ Audio Upload       │  ║
+║  │ ├─ Request List      │ ├─ removeProfilePic   │ ├─ Document Upload    │  ║
+║  │ ├─ Approve           │ └─ rejectCall         │ └─ Sticker Upload     │  ║
+║  │ └─ Reject            │                     │                     │  ║
+║  └─────────────────────────────────────────────────────────────────────┘  ║
+║                                                                           ║
+║  ✅ No Browser Required  ✅ Multi-Device  ✅ WebSocket Based             ║
+║  ✅ Active Maintenance   ✅ MIT License   ✅ Full API Coverage           ║
+║                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+```
