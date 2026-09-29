@@ -83,6 +83,7 @@ sock.ev.on('creds.update', saveCreds)
 | 🔄 **Classify Disconnect** | Maps every WA disconnect code to `{ category, shouldReconnect, backoffMs }` — properly handles code 515 (restartRequired) as recoverable, not fatal |
 | ⏱️ **Rate Limiter** | Anti-spam pacing calculator: enforces per-minute/hour/day caps, burst allowance, new-chat delays, identical-message dedup |
 | 🖼️ **Album Message** | Send multiple images/videos as a single WA album/grid, with per-item or top-level caption and `gifPlayback` support |
+| 🔘 **Horizontal Buttons** | Modern native-flow buttons that render on ALL clients — text, image, video, GIF headers + classic location map-card style + automatic group conversion |
 | 🤖 **AI Label Config** | `aiLabel: true/false` in socket config — controls whether outgoing messages carry the `biz_bot` attribute that WA uses to render the AI icon |
 | 🔎 **USync Username Protocol** | Username resolution baked into USync queries — resolve WA usernames alongside contacts in a single round-trip |
 | 📥 **Offline Node Processor** | Batch-processes pending stanzas received while offline, preventing message loss on reconnect |
@@ -413,6 +414,108 @@ await sock.sendMessage(jid, {
 
 ---
 
+## 🔘 Horizontal Buttons (Interactive Messages)
+
+> ⚡ **Fixed in this fork:** classic text-only `buttonsMessage` is rejected by new WhatsApp
+> clients ("Your version of WhatsApp doesn't support it"). The `buttons` API now sends
+> **native flow (interactiveMessage)** buttons that render on **all modern clients** —
+> normal messages, images, videos and GIFs. Location keeps the classic map-card style.
+
+### Text + Horizontal Buttons
+
+```javascript
+await sock.sendMessage(jid, {
+    text: 'Pong 9 Ms ⚡\nDeveloper: ISHAN-X × LOVELY',
+    footer: 'ISHAN-X MD PRO',
+    buttons: [
+        { buttonText: { displayText: 'menu' },  buttonId: 'menu',  type: 1 },
+        { buttonText: { displayText: 'owner' }, buttonId: 'owner', type: 1 }
+    ]
+})
+```
+
+### Image / Video / GIF + Buttons
+
+```javascript
+// Image header
+await sock.sendMessage(jid, {
+    image: { url: './banner.jpg' },
+    caption: 'Welcome!',
+    footer: 'My Bot',
+    buttons: [
+        { buttonText: { displayText: 'menu' },  buttonId: 'menu',  type: 1 },
+        { buttonText: { displayText: 'owner' }, buttonId: 'owner', type: 1 }
+    ]
+})
+
+// GIF header (animated, loops like a GIF)
+await sock.sendMessage(jid, {
+    gif: { url: './animation.gif' },
+    caption: 'Live preview!',
+    buttons: [ /* ... */ ]
+})
+
+// Video header (gifPlayback = loop like a GIF)
+await sock.sendMessage(jid, {
+    video: { url: './clip.mp4' },
+    gifPlayback: true,
+    caption: 'Watch this',
+    buttons: [ /* ... */ ]
+})
+```
+
+### Location Map-Card + Buttons (classic style, still renders on new clients)
+
+```javascript
+await sock.sendMessage(jid, {
+    location: {
+        degreesLatitude: 9.9312,
+        degreesLongitude: 76.2673,
+        name: 'ISHAN-X MD PRO',           // bold title under the map
+        address: 'Select an option below', // 📍 subtitle
+        // jpegThumbnail: buffer — custom map image (optional)
+    },
+    text: 'Pong 9 Ms ⚡',
+    buttons: [
+        { buttonText: { displayText: 'menu' },  buttonId: 'menu',  type: 1 },
+        { buttonText: { displayText: 'owner' }, buttonId: 'owner', type: 1 }
+    ]
+})
+```
+
+### Handling Button Clicks
+
+Button replies arrive in `messages.upsert` — native flow uses
+`interactiveResponseMessage`, classic uses `buttonsResponseMessage`:
+
+```javascript
+sock.ev.on('messages.upsert', async ({ messages, type }) => {
+    if (type !== 'notify') return
+    const msg = messages[0]
+    if (!msg.message || msg.key.fromMe) return
+
+    let clickedId = msg.message.buttonsResponseMessage?.selectedButtonId
+    const native = msg.message.interactiveResponseMessage?.nativeFlowResponseMessage
+    if (!clickedId && native?.paramsJson) {
+        try { clickedId = JSON.parse(native.paramsJson).id } catch {}
+    }
+
+    if (clickedId === 'menu')  await sock.sendMessage(msg.key.remoteJid, { text: '📋 MENU...' })
+    if (clickedId === 'owner') await sock.sendMessage(msg.key.remoteJid, { text: '👑 Owner...' })
+})
+```
+
+> **Notes**
+> - Groups: `listMessage` / `buttonsMessage` / `templateMessage` are auto-converted to
+>   interactive native flow on send — buttons work in groups too.
+> - WhatsApp Web and very old clients don't render native flow cards — mobile clients
+>   (recent Android/iOS) render them fully.
+> - Full working demo: [`examples/ping-buttons.js`](examples/ping-buttons.js)
+>   (`.ping` → image + horizontal buttons + click handling) and a visual preview in
+>   [`banner-preview.html`](banner-preview.html).
+
+---
+
 ## 🚫 Ban Checker
 
 4-factor ban detection against WhatsApp's own servers — no third-party API:
@@ -575,6 +678,9 @@ sock.ev.on('connection.update', ({ connection, lastDisconnect }) => {
 ## ⏱️ Rate Limiter
 
 Anti-ban pacing calculator — wire into your send path before each `sendMessage`:
+
+> ⚡ **Fixed in this fork:** `RateLimiter` and `classifyDisconnect` are now properly
+> exported from the package root (the files existed but were never re-exported).
 
 ```javascript
 import { RateLimiter } from 'ishumdz-bail'
