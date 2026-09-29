@@ -416,15 +416,18 @@ await sock.sendMessage(jid, {
 
 ## 🔘 Horizontal Buttons (Interactive Messages)
 
-> ⚡ **Fixed in this fork:** classic text-only `buttonsMessage` is rejected by new WhatsApp
-> clients ("Your version of WhatsApp doesn't support it"). The `buttons` API now sends
-> **native flow (interactiveMessage)** buttons that render on **all modern clients** —
-> normal messages, images, videos and GIFs. Location keeps the classic map-card style.
+> ⚡ **How it renders:** the `buttons` API sends the **classic ButtonsMessage** — the
+> only format WhatsApp renders as a true **horizontal button row**. Modern clients
+> render it when the message has a **header** (image / video / GIF / location map-card).
+> A **location header needs no media upload** — coordinates alone give the big map
+> card + horizontal row, and a **custom image or GIF** works with one media upload.
+> Set `{ nativeFlow: true }` for vertical native-flow quick_reply buttons instead.
 
-### Text + Horizontal Buttons
+### Text + Horizontal Buttons (location header = zero uploads)
 
 ```javascript
 await sock.sendMessage(jid, {
+    location: { degreesLatitude: 9.9312, degreesLongitude: 76.2673 }, // simple map card
     text: 'Pong 9 Ms ⚡\nDeveloper: ISHAN-X × LOVELY',
     footer: 'ISHAN-X MD PRO',
     buttons: [
@@ -434,10 +437,10 @@ await sock.sendMessage(jid, {
 })
 ```
 
-### Image / Video / GIF + Buttons
+### Custom Pic / GIF + Horizontal Buttons
 
 ```javascript
-// Image header
+// Image header (one media upload, then horizontal row)
 await sock.sendMessage(jid, {
     image: { url: './banner.jpg' },
     caption: 'Welcome!',
@@ -448,7 +451,7 @@ await sock.sendMessage(jid, {
     ]
 })
 
-// GIF header (animated, loops like a GIF)
+// Animated GIF header
 await sock.sendMessage(jid, {
     gif: { url: './animation.gif' },
     caption: 'Live preview!',
@@ -464,7 +467,7 @@ await sock.sendMessage(jid, {
 })
 ```
 
-### Location Map-Card + Buttons (classic style, still renders on new clients)
+### Location Map-Card + Buttons (custom name/address)
 
 ```javascript
 await sock.sendMessage(jid, {
@@ -476,10 +479,24 @@ await sock.sendMessage(jid, {
         // jpegThumbnail: buffer — custom map image (optional)
     },
     text: 'Pong 9 Ms ⚡',
-    buttons: [
-        { buttonText: { displayText: 'menu' },  buttonId: 'menu',  type: 1 },
-        { buttonText: { displayText: 'owner' }, buttonId: 'owner', type: 1 }
-    ]
+    buttons: [ /* ... */ ]
+})
+```
+
+### Text-only (TEXT header, best-effort) & native flow escape hatch
+
+```javascript
+// text-only: TEXT headerType — some clients still show the row vertically;
+// for a guaranteed horizontal row attach image/gif/location as above.
+await sock.sendMessage(jid, {
+    text: 'Pong 9 Ms ⚡', footer: 'ISHAN-X',
+    buttons: [ { buttonText: { displayText: 'menu' }, buttonId: 'menu', type: 1 } ]
+})
+
+// vertical native-flow quick_reply buttons (renders on all modern clients)
+await sock.sendMessage(jid, {
+    text: 'Menu?', nativeFlow: true,
+    buttons: [ { buttonText: { displayText: 'menu' }, buttonId: 'menu', type: 1 } ]
 })
 ```
 
