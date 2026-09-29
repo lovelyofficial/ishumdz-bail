@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ishumdz-bail — .ping Button Card Preview</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        background: #0b141a;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        padding: 40px 16px;
+        font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    }
+    h1 { color: #e9edef; font-size: 18px; font-weight: 500; }
+    .hint { color: #667781; font-size: 13px; }
+
+    /* ── WhatsApp bubble card ── */
+    .wa-card {
+        width: 320px;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #1f2c33;
+        box-shadow: 0 4px 24px rgba(0,0,0,.55);
+        position: relative;
+    }
+    .wa-card img.banner { display: block; width: 100%; height: auto; }
+    .wa-body { padding: 10px 12px 8px; }
+    .wa-caption { color: #e9edef; font-size: 14.2px; line-height: 1.45; }
+    .wa-caption b { font-weight: 600; }
+    .wa-caption .bolt { color: #ffd166; }
+    .wa-footer { color: #8696a0; font-size: 11.5px; margin-top: 8px; }
+    .wa-time {
+        position: absolute; right: 8px; bottom: 52px;
+        color: rgba(233,237,239,.6); font-size: 11px;
+        background: rgba(11,20,26,.4); padding: 1px 6px; border-radius: 8px;
+    }
+
+    /* ── horizontal button row (native flow style) ── */
+    .wa-buttons { display: flex; border-top: 1px solid rgba(255,255,255,.08); }
+    .wa-btn {
+        flex: 1;
+        display: flex; align-items: center; justify-content: center; gap: 7px;
+        padding: 11px 6px;
+        color: #25d366;
+        font-size: 14px; font-weight: 500;
+        cursor: pointer;
+        user-select: none;
+        transition: background .15s ease;
+    }
+    .wa-btn + .wa-btn { border-left: 1px solid rgba(255,255,255,.08); }
+    .wa-btn:hover { background: rgba(37,211,102,.09); }
+    .wa-btn:active { background: rgba(37,211,102,.16); }
+    .wa-btn .icon { font-size: 15px; }
+
+    .note { color: #667781; font-size: 12px; max-width: 340px; text-align: center; line-height: 1.5; }
+    .note b { color: #25d366; }
+</style>
+</head>
+<body>
+
+<h1>📱 .ping reply — image + horizontal buttons</h1>
+
+<div class="wa-card">
+    <img class="banner" src="media/ping-banner.jpg" alt="banner">
+    <div class="wa-body">
+        <div class="wa-caption">
+            <b>Pong 9 Ms</b> <span class="bolt">⚡</span><br>
+            ⏱️ Uptime: 12m
+        </div>
+        <div class="wa-footer">ISHAN-X MD PRO</div>
+    </div>
+    <div class="wa-time">3:18 PM ✓✓</div>
+    <div class="wa-buttons">
+        <div class="wa-btn"><span class="icon">☰</span> menu</div>
+        <div class="wa-btn"><span class="icon">🔍</span> owner</div>
+    </div>
+</div>
+
+<p class="note">
+    This is exactly how the <b>.ping</b> reply renders on WhatsApp —
+    banner image on top, caption + footer, and a <b>horizontal button row</b> below
+    (native flow, works on all modern clients).
+</p>
+
+</body>
+</html>
