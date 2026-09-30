@@ -423,6 +423,19 @@ await sock.sendMessage(jid, {
 > card + horizontal row, and a **custom image or GIF** works with one media upload.
 > Set `{ nativeFlow: true }` for vertical native-flow quick_reply buttons instead.
 
+### Button Types — Quick Reference
+
+| Button property           | Tap behavior                                  | Since   |
+| ------------------------- | --------------------------------------------- | ------- |
+| `buttonId` + `buttonText` | Quick reply — sends the id back to your bot   | v1.0.19 |
+| `rows` / `sections`       | Opens a highlighted list sheet on tap         | v1.0.22 |
+| `url`                     | Opens the link / WhatsApp channel immediately | v1.0.23 |
+| `copy`                    | Copies the code to the clipboard              | v1.0.23 |
+| `call`                    | Opens the dialer with the number              | v1.0.23 |
+
+All of them mix freely in one message and render as a single horizontal row
+(when the message has a header) — see the full example below.
+
 ### Text + Horizontal Buttons (location header = zero uploads)
 
 ```javascript
@@ -483,6 +496,87 @@ await sock.sendMessage(jid, {
 })
 ```
 
+### Tap-to-Open List Sheet (rows on a button) — v1.0.22+
+
+Give any horizontal button a `rows` or `sections` array and **tapping it opens a
+highlighted list sheet** — the same sheet classic `listMessage` shows, with section
+titles, a `highlight_label` badge and row descriptions:
+
+```javascript
+await sock.sendMessage(jid, {
+    image: { url: './banner.jpg' },       // or gif / location / video header
+    caption: 'Pong 9 Ms ⚡',
+    footer: 'ISHAN-X MD PRO',
+    buttons: [
+        { buttonText: { displayText: '☰ menu' },  buttonId: 'menu',  type: 1 },
+        { buttonText: { displayText: '🔍 owner' }, buttonId: 'owner', type: 1 },
+        // 📂 this button opens the sheet on tap:
+        {
+            buttonText: { displayText: '📂 allmenus' },
+            buttonId: 'allmenus', type: 1,
+            highlightLabel: '⭐ MAIN',       // optional — badge on the section
+            sectionTitle: 'All Menus',       // optional — section heading
+            rows: [
+                { title: '📥 Download Menu', description: 'Downloader commands', rowId: '.downloadmenu' },
+                { title: '✨ AI Menu',       description: 'AI commands',        rowId: '.aimenu' }
+            ]
+        },
+        // multiple sections? pass `sections` instead of `rows`:
+        {
+            buttonText: { displayText: '⚙️ settings' }, buttonId: 'settings', type: 1,
+            sections: [
+                { title: 'Main', highlight_label: '⭐ MAIN', rows: [ /* ... */ ] },
+                { title: 'More', rows: [ /* ... */ ] }
+            ]
+        }
+    ]
+})
+```
+
+**How it works:**
+
+- `rows` — single-section shortcut (optional `sectionTitle` and `highlightLabel` on the button)
+- `sections` — full control: multiple sections, each with its own `title` and `highlight_label`
+- Each row accepts `{ title, description?, rowId }` (`id` also works)
+- Tapping a row sends back an `interactiveResponseMessage` — parse its `paramsJson`
+  for the row id (the click bridge below handles this)
+- Works in both layouts: the classic horizontal row (with header) and `{ nativeFlow: true }` vertical
+
+### One-Click Action Buttons (URL / Copy / Call) — v1.0.23+
+
+Give a button a `url`, `copy` or `call` value and it becomes a **one-click action
+button** — tapping performs the action directly instead of sending a reply back
+to your bot (opens a link/channel, copies a code, opens the dialer):
+
+```javascript
+await sock.sendMessage(jid, {
+    image: { url: './banner.jpg' },   // location / gif / video header um ok
+    caption: 'Pong 9 Ms ⚡',
+    footer: 'ISHAN-X MD PRO',
+    buttons: [
+        { buttonText: { displayText: '☰ menu' }, buttonId: 'menu', type: 1 },
+        // 📢 one tap → channel/page opens:
+        { buttonText: { displayText: '📢 Channel' }, url: 'https://whatsapp.com/channel/0029V...' },
+        // 🎁 one tap → code copies to clipboard:
+        { buttonText: { displayText: '🎁 Voucher' }, copy: 'ISHAN2026' },
+        // 📞 one tap → dialer opens:
+        { buttonText: { displayText: '📞 Call Owner' }, call: '919999999999' },
+        // a tap-to-open sheet button can share the same message:
+        { buttonText: { displayText: '📂 allmenus' }, buttonId: 'allmenus',
+          highlightLabel: '⭐ MAIN', rows: [ /* ... */ ] }
+    ]
+})
+```
+
+**How it works:**
+
+- `url` → native-flow `cta_url` (WhatsApp channel link, website, wa.me — anything)
+- `copy` → `cta_copy` (coupon codes, voucher codes, pairing codes)
+- `call` → `cta_call` (phone number including country code)
+- Plain buttons + sheet buttons + action buttons all mix in **one horizontal row**
+- Action buttons never send a reply to your bot — nothing to handle in `messages.upsert`
+- Works in groups too — the group auto-converter preserves the native-flow names
+
 ### Text-only (TEXT header, best-effort) & native flow escape hatch
 
 ```javascript
@@ -500,36 +594,159 @@ await sock.sendMessage(jid, {
 })
 ```
 
-### Handling Button Clicks
+### Full Example — Everything in One Message
 
-Button replies arrive in `messages.upsert` — native flow uses
-`interactiveResponseMessage`, classic uses `buttonsResponseMessage`:
+A complete bot reply: location map-card header, a plain quick-reply, a highlighted
+list-sheet button and a one-click channel button — all in one horizontal row:
 
 ```javascript
+await sock.sendMessage(jid, {
+    location: {
+        degreesLatitude: 9.9312,
+        degreesLongitude: 76.2673,
+        name: 'ISHAN-X MD PRO',
+        address: 'Select an option below'
+    },
+    text: 'Pong 9 Ms ⚡\nDeveloper: ISHAN-X × LOVELY',
+    footer: 'ISHAN-X MD PRO',
+    buttons: [
+        // 1) plain quick-reply → sends 'menu' back to your bot
+        { buttonText: { displayText: '☰ menu' }, buttonId: 'menu', type: 1 },
+        // 2) tap-to-open highlighted list sheet
+        {
+            buttonText: { displayText: '📂 allmenus' },
+            buttonId: 'allmenus', type: 1,
+            highlightLabel: '⭐ MAIN',
+            sectionTitle: 'All Menus',
+            rows: [
+                { title: '📥 Download Menu', description: 'Downloader commands', rowId: '.downloadmenu' },
+                { title: '✨ AI Menu',       description: 'AI commands',         rowId: '.aimenu' }
+            ]
+        },
+        // 3) one-click action → opens your channel, nothing is sent back
+        { buttonText: { displayText: '📢 Channel' }, url: 'https://whatsapp.com/channel/0029V...' }
+    ]
+}, { quoted: msg })
+```
+
+> ⚠️ **Limit:** the classic horizontal row renders up to **3 buttons** per message on
+> most clients. Need more? Use `{ nativeFlow: true }` for a vertical layout that
+> supports more buttons, or split across two messages.
+
+### Handling Button Clicks
+
+Button and row taps arrive in `messages.upsert`. Three shapes are possible:
+classic quick replies → `buttonsResponseMessage`, native-flow taps (sheet rows and
+vertical quick replies) → `interactiveResponseMessage`, classic list rows →
+`listResponseMessage`. This one bridge converts all three into a plain command id —
+drop it above your command parser so every existing case keeps working:
+
+```javascript
+function resolveButtonResponse(msg) {
+    // classic horizontal quick-reply buttons
+    const classic = msg.message?.buttonsResponseMessage?.selectedButtonId
+    if (classic) return classic
+
+    // native flow: sheet rows and vertical quick replies
+    const nf = msg.message?.interactiveResponseMessage?.nativeFlowResponseMessage
+    if (nf?.paramsJson) {
+        try {
+            const p = JSON.parse(nf.paramsJson)
+            return p.id || p.selectedId || p.selected_row_id || null
+        } catch { /* ignore */ }
+    }
+
+    // classic listMessage rows
+    const list = msg.message?.listResponseMessage?.singleSelectReply?.selectedRowId
+    if (list) return list
+
+    return null
+}
+
 sock.ev.on('messages.upsert', async ({ messages, type }) => {
     if (type !== 'notify') return
     const msg = messages[0]
     if (!msg.message || msg.key.fromMe) return
 
-    let clickedId = msg.message.buttonsResponseMessage?.selectedButtonId
-    const native = msg.message.interactiveResponseMessage?.nativeFlowResponseMessage
-    if (!clickedId && native?.paramsJson) {
-        try { clickedId = JSON.parse(native.paramsJson).id } catch {}
-    }
+    // turn any button / row tap into normal command text:
+    const clicked = resolveButtonResponse(msg)
+    if (clicked) msg.message = { conversation: clicked }
 
-    if (clickedId === 'menu')  await sock.sendMessage(msg.key.remoteJid, { text: '📋 MENU...' })
-    if (clickedId === 'owner') await sock.sendMessage(msg.key.remoteJid, { text: '👑 Owner...' })
+    // your existing command parser keeps working untouched:
+    // switch (command) { case 'menu': ... case 'owner': ... }
 })
 ```
 
+Action buttons (`url` / `copy` / `call`) never send a reply — nothing to handle here.
+
 > **Notes**
-> - Groups: `listMessage` / `buttonsMessage` / `templateMessage` are auto-converted to
->   interactive native flow on send — buttons work in groups too.
-> - WhatsApp Web and very old clients don't render native flow cards — mobile clients
->   (recent Android/iOS) render them fully.
-> - Full working demo: [`examples/ping-buttons.js`](examples/ping-buttons.js)
->   (`.ping` → image + horizontal buttons + click handling) and a visual preview in
->   [`banner-preview.html`](banner-preview.html).
+> - **Groups:** `listMessage` / `buttonsMessage` / `templateMessage` are auto-converted
+>   to interactive native flow on send — and buttons that carry a native-flow action
+>   (list sheet, URL, copy, call) are preserved as-is, so sheets and one-click
+>   actions work in groups too (v1.0.23+).
+> - **Client support:** modern Android / iOS / Business clients render everything on
+>   this page. WhatsApp Web and very old clients may show only the vertical
+>   native-flow layout.
+> - **Media headers:** one media header per message (image, GIF or video). The
+>   location map card needs **no media upload at all**.
+> - Full working demos: [`examples/ping-buttons.js`](examples/ping-buttons.js)
+>   (`.ping` → image + horizontal buttons + click handling) and
+>   [`examples/menu-buttons.js`](examples/menu-buttons.js)
+>   (`.menu` → custom image/GIF + buttons + highlighted menu sheet), plus a visual
+>   preview in [`banner-preview.html`](banner-preview.html).
+
+### Base Compatibility — cantarella / Case X Style Code (v1.0.27+)
+
+Code copied from other Baileys bases (cantarella-baileys, Case X Plugin YOUHU MD, etc.)
+runs without changes. Three shapes are accepted:
+
+**1) Raw `buttonsMessage` classic menu card — even the risky mix.** A raw classic
+message that mixes `nativeFlowInfo` (single_select sheet) or `cta_*` buttons with
+plain buttons is **auto-upgraded to a native-flow interactive card**, so it can never
+render the "version doesn't support it" bubble:
+
+```javascript
+// Case X / cantarella style — works as-is:
+await sock.sendMessage(jid, {
+    buttonsMessage: {
+        locationMessage: { degreesLatitude: 0, degreesLongitude: 0, name: 'Youhu base', address: '📍Today' },
+        contentText: menuText, footerText: footer, headerType: 6,
+        buttons: [
+            { buttonId: 'menu', buttonText: { displayText: '☰ menu' }, type: 1,
+              nativeFlowInfo: { name: 'single_select', paramsJson: JSON.stringify({
+                  title: 'Pilih Menu',
+                  sections: [{ title: 'base', highlight_label: '🔥', rows: [{ title: 'ping', description: 'live', id: '/ping' }] }]
+              }) } },
+            { buttonId: 'sc', buttonText: { displayText: '⌕ script' }, type: 1 }
+        ]
+    }
+})
+```
+
+**2) Raw `interactiveMessage` native-flow card — straight through `sendMessage`.**
+No `generateWAMessageFromContent` + `relayMessage` dance needed (though that still
+works too). `messageVersion` defaults to 1:
+
+```javascript
+await sock.sendMessage(jid, {
+    interactiveMessage: {
+        body: { text: 'Pairing code: 1234-5678' },
+        footer: { text: 'Tap to copy' },
+        header: { hasMediaAttachment: false },
+        nativeFlowMessage: {
+            buttons: [{ name: 'cta_copy', buttonParamsJson: JSON.stringify({ display_text: 'Copy', copy_code: '12345678' }) }]
+        }
+    }
+})
+
+// short form also accepted:
+await sock.sendMessage(jid, { interactiveMessage: { buttons: [{ name: 'quick_reply', buttonParamsJson: '{"display_text":"hi","id":"hi"}' }] } })
+```
+
+**3) Plain raw `buttonsMessage`** (no native-flow extras) stays classic and gets the
+automatic invisible-PNG header when you omit one. Flow params are accepted as
+`paramsJson` or `buttonParamsJson`, and `single_select` / `cta_url` / `cta_copy` /
+`cta_call` / `quick_reply` names are preserved as-is.
 
 ---
 
@@ -1152,6 +1369,55 @@ sock.ev.on('messages.upsert', async ({ messages }) => {
 Made with ❤️ by **Lovely**
 
 </div>
+
+---
+
+## 🚀 Hosting / Troubleshooting (OptikLink, Pterodactyl, etc.)
+
+If `npm install` fails on bot hosting panels (OptikLink, Pterodactyl, etc.), these are
+the most common reasons:
+
+### ❌ `npm error code EALLOWGIT`
+
+```
+npm error Fetching packages of type "git" have been disabled
+npm error Refusing to fetch "libsignal@git+ssh://git@github.com/..."
+```
+
+**Reason:** npm v12+ (and most bot hosts) disable `git:`-type package fetches by default.
+Older ishumdz-bail versions (< 1.0.20) used `"libsignal": "github:tenka-san/libsignal-node"`
+as a dependency — hosts that block git fetches refuse to install it.
+
+**Fix:** use **ishumdz-bail v1.0.20 or later** — libsignal is now pulled from the
+npm registry (`libsignal-node`), no git fetch needed:
+
+```bash
+npm install ishumdz-bail@latest
+```
+
+If you must stay on an older version and your host allows it, enable git fetching:
+
+```bash
+npm config set allow-git=all
+```
+
+### ❌ `Error: Cannot find module 'dotenv'`
+
+This error comes from **your bot's `index.js`**, not from the library — your bot code
+does `require('dotenv')` but `dotenv` is not in the bot's `package.json` dependencies.
+
+**Fix:** add it and reinstall:
+
+```bash
+npm install dotenv
+```
+
+### ✅ Deploy checklist for restricted hosts
+
+1. `ishumdz-bail` **v1.0.20+** in `package.json` (no git deps inside)
+2. `dotenv` (and every other module your bot requires) listed in your **bot's** `package.json`
+3. Run `npm install` from the bot folder (not global), then `npm start`
+4. If the host still blocks git deps, check `npm ls` output for any `github:` entries
 
 ---
 

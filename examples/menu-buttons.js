@@ -169,52 +169,51 @@ ${menuHeaderLine}
 ${menuFooterLine}`;
 
     // ─────────────────────────────────────────────────────
-    // 🔘 Horizontal buttons + full menu sheet (classic)
+    // 🔘 Horizontal buttons + tap-to-open list sheet
+    // (ishumdz-bail v1.0.22+: button `sections`/`rows` option —
+    //  the library builds the single_select sheet for you)
     // ─────────────────────────────────────────────────────
+    const menuSections = [
+      {
+        title: '𝙄𝙎𝙃𝘼𝙉-𝙓 𝙈𝘿 ᴠ.𝟽.𝟶.𝟶 ᴘʀᴏ — ᴍᴇɴᴜ ʟɪꜱᴛ ⭐',
+        highlight_label: '⭐ MAIN',
+        rows: [
+          { title: '📥 Download Menu',    description: 'Downloader commands',  rowId: `${config.PREFIX}downloadmenu` },
+          { title: '✨ AI Menu',          description: 'AI commands',          rowId: `${config.PREFIX}aimenu` },
+          { title: '🔍 Search Menu',      description: 'Search commands',      rowId: `${config.PREFIX}searchmenu` },
+          { title: '📑 Other Menu',       description: 'Other commands',       rowId: `${config.PREFIX}othermenu` },
+          { title: '🎨 Logo Menu',        description: 'Logo maker',           rowId: `${config.PREFIX}logomenu` },
+          { title: '🎬 Movie Menu',       description: 'Movie commands',       rowId: `${config.PREFIX}moviemenu` },
+          { title: '🎌 Anime Menu',       description: 'Anime commands',       rowId: `${config.PREFIX}animemenu` }
+        ]
+      },
+      {
+        title: '𝙄𝙎𝙃𝘼𝙉-𝙓 𝙈𝘿 ᴠ.𝟽.𝟶.𝟶 ᴘʀᴏ — ꜱᴇᴄᴏɴᴅ ʟɪꜱᴛ 🔥',
+        highlight_label: '🔥 MORE',
+        rows: [
+          { title: '🏡 Main Menu',        description: 'Main commands',        rowId: `${config.PREFIX}mainmenu` },
+          { title: '🧑‍💻 Owner Menu',     description: 'Owner commands',       rowId: `${config.PREFIX}ownermenu` },
+          { title: '👥 Group Menu',       description: 'Group commands',       rowId: `${config.PREFIX}groupmenu` },
+          { title: '📰 News Menu',        description: 'News commands',        rowId: `${config.PREFIX}newsmenu` },
+          { title: '🐱 Sticker Menu',     description: 'Sticker commands',     rowId: `${config.PREFIX}stickermenu` },
+          { title: '🧑‍🔧 Settings',       description: 'Bot settings',         rowId: `${config.PREFIX}settings` },
+          { title: '⚡ Ping2 Dashboard',  description: 'Image dashboard',      rowId: `${config.PREFIX}ping2` },
+          { title: '🔞 NSFW Menu',        description: 'NSFW commands',        rowId: `${config.PREFIX}nsfwmenu` }
+        ]
+      }
+    ];
+
     const mk = (label, id) => ({
       buttonId: id,
       buttonText: { displayText: label },
-      type: 1,
-      // single_select row inside a horizontal button → tap opens the menu sheet
-      nativeFlowInfo: {
-        name: 'single_select',
-        paramsJson: JSON.stringify({
-          title: label,
-          sections: [{
-            title: '𝙄𝙎𝙃𝘼𝙉-𝙓 𝙈𝘿 ᴠ.𝟽.𝟶.𝟶 ᴘʀᴏ — ᴍᴇɴᴜ ʟɪꜱᴛ ⭐',
-            highlight_label: '⭐ MAIN',
-            rows: [
-              { title: '📥 Download Menu',    description: 'Downloader commands',  id: `${config.PREFIX}downloadmenu` },
-              { title: '✨ AI Menu',          description: 'AI commands',          id: `${config.PREFIX}aimenu` },
-              { title: '🔍 Search Menu',      description: 'Search commands',      id: `${config.PREFIX}searchmenu` },
-              { title: '📑 Other Menu',       description: 'Other commands',       id: `${config.PREFIX}othermenu` },
-              { title: '🎨 Logo Menu',        description: 'Logo maker',           id: `${config.PREFIX}logomenu` },
-              { title: '🎬 Movie Menu',       description: 'Movie commands',       id: `${config.PREFIX}moviemenu` },
-              { title: '🎌 Anime Menu',       description: 'Anime commands',       id: `${config.PREFIX}animemenu` }
-            ]
-          },
-          {
-            title: '𝙄𝙎𝙃𝘼𝙉-𝙓 𝙈𝘿 ᴠ.𝟽.𝟶.𝟶 ᴘʀᴏ — ꜱᴇᴄᴏɴᴅ ʟɪꜱᴛ 🔥',
-            highlight_label: '🔥 MORE',
-            rows: [
-              { title: '🏡 Main Menu',        description: 'Main commands',        id: `${config.PREFIX}mainmenu` },
-              { title: '🧑‍💻 Owner Menu',     description: 'Owner commands',       id: `${config.PREFIX}ownermenu` },
-              { title: '👥 Group Menu',       description: 'Group commands',       id: `${config.PREFIX}groupmenu` },
-              { title: '📰 News Menu',        description: 'News commands',        id: `${config.PREFIX}newsmenu` },
-              { title: '🐱 Sticker Menu',     description: 'Sticker commands',     id: `${config.PREFIX}stickermenu` },
-              { title: '🧑‍🔧 Settings',       description: 'Bot settings',         id: `${config.PREFIX}settings` },
-              { title: '⚡ Ping2 Dashboard',  description: 'Image dashboard',      id: `${config.PREFIX}ping2` },
-              { title: '🔞 NSFW Menu',        description: 'NSFW commands',        id: `${config.PREFIX}nsfwmenu` }
-            ]
-          }]
-        })
-      }
+      type: 1
     });
 
     const buttons = [
       mk('☰ menu',      `${config.PREFIX}menu`),
       mk('🔍 owner',    `${config.PREFIX}owner`),
-      mk('📂 allmenus', `${config.PREFIX}allmenus`)   // ← this one opens the sheet
+      // ← tap opens the highlighted menu sheet (rows/sections on a button)
+      { ...mk('📂 allmenus', `${config.PREFIX}allmenus`), sections: menuSections }
     ];
 
     const menuSendFooter = footer || config.BOT_FOOTER;
