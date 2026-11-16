@@ -1,6 +1,6 @@
 {
     "name": "ishumdz-bail",
-    "version": "1.0.27",
+    "version": "1.0.30",
     "description": "WhatsApp API Modification By Lovely",
     "keywords": [
         "whatsapp",
@@ -16,9 +16,10 @@
         "lovely",
         "wa-bot"
     ],
-    "homepage": "https://ishanx-pro.site.je",
+    "homepage": "https://github.com/lovelyofficial/ishumdz-bail",
     "repository": {
-        "url": "https://www.npmjs.com/package/ishumdz-bail"
+        "type": "git",
+        "url": "git+https://github.com/lovelyofficial/ishumdz-bail.git"
     },
     "license": "MIT",
     "author": "Lovely",
